@@ -6,9 +6,29 @@ int numPins = sizeof(ledPins) / sizeof(ledPins[0]);
 int contador = 0;
 
 void setup() {
-  // Configura os pinosdos LEDs como saida
+  // Configura os pinosb dos LEDs como saida
   for (int i = 0; i < numPins; i++) {
-    pinMode(ledPins[i], OUTPUT)
+    pinMode(ledPins[i], OUTPUT);
     
   }
+}
+
+
+void loop () {
+  // converter o valor do contador em binario e acender o led correspondente
+  for(int i = 0; i < numPins; i++) {
+      digitalWrite(ledPins[i], (contador >> i) & i);
+  }
+
+  // Incrementar o contador
+  contador++;
+
+  // Se o contador atingir 16, retornar a 0
+  if (contador == 16) {
+    contador = 0;  
+    
+  }
+
+  // Aguardar um pequeno intervalo antes de incrementar novamente.
+  delay(500);
 }
