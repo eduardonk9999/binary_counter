@@ -1,5 +1,6 @@
+
 // Definir os pinos dos LEDs
-int ledPins[] = {2, 3, 4, 5};
+int ledPins[] = {3, 4, 5, 6};
 int numPins = sizeof(ledPins) / sizeof(ledPins[0]);
 
 // Variavel para armazenar o valor atual do contador
@@ -17,7 +18,7 @@ void setup() {
 void loop () {
   // converter o valor do contador em binario e acender o led correspondente
   for(int i = 0; i < numPins; i++) {
-      digitalWrite(ledPins[i], (contador >> i) & i);
+      digitalWrite(ledPins[i], (contador >> i) & 1);
   }
 
   // Incrementar o contador
@@ -30,5 +31,5 @@ void loop () {
   }
 
   // Aguardar um pequeno intervalo antes de incrementar novamente.
-  delay(500);
+  delay(1200);
 }
